@@ -1,0 +1,17 @@
+{
+  "apps": [
+    {
+      "name": "nearflows",
+      "script": "./index.js",
+      "watch": false,
+      "wait_ready": true
+    },
+    {
+      "name": "nearflowworker",
+      "script": "./worker.js",
+      "watch": false,
+      "wait_ready": true,
+      "kill_timeout" : 30000
+    }
+  ]
+}

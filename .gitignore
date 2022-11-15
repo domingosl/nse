@@ -1,0 +1,9 @@
+.idea
+.DS_Store
+.cache
+node_modules
+public
+logs
+application-state.json
+.env
+.parcel-cache

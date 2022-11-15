@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout</title>
+
+    <link href="./scss/main.scss" rel="stylesheet">
+</head>
+<body>
+
+<div class="container text-center">
+
+    <h1 class="section-title" id="wallet-title">...</h1>
+
+    <p id="wallet-description" class="lead">...</p>
+
+    <br />
+    <p>Please indicate how much you wish to pay</p>
+    <div class="compound-input">
+        <label id="wallet-currency">...</label>
+        <input type="text" id="amount" placeholder="Amount"/>
+    </div>
+
+    <br />
+    <button id="payBtn" class="section-cta">Proceed to payment page</button>
+
+</div>
+
+
+<script id="main-script" src="./js/wallet-checkout.js" data-wallet-id="<%= id %>"></script>
+<link rel="stylesheet" href="../../node_modules/@sweetalert2/theme-dark/dark.css">
+<link rel="stylesheet" href="../../node_modules/noty/lib/noty.css">
+<link rel="stylesheet" href="../../node_modules/noty/lib/themes/sunset.css">
+
+<link href="./scss/overrides.scss" rel="stylesheet">
+</body>
+</html>

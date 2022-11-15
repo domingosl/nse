@@ -1,0 +1,15 @@
+version: '3'
+services:
+  nse:
+    container_name: nse
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '4573:4573'
+    networks:
+      - backend-services
+networks:
+  backend-services:
+      name: backend-services

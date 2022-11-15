@@ -1,0 +1,738 @@
+@import "reset";
+@import "litegraph";
+@import "loader";
+@import "noty-theme";
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=Inter:wght@100;400;700&display=swap');
+
+html,body {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #333;
+  color: #EEE;
+  font: 14px Inter, sans-serif;
+}
+
+footer {
+  position: absolute;
+  bottom: -35px;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 14px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  border-bottom: 1px dashed white;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.form-error {
+  font-size: 10px;
+  display: block;
+  margin-top: -8px;
+  padding: 0;
+  color: #c15656;
+  font-weight: 600;
+  height: 15px;
+}
+
+p.lead {
+  font-size: 25px;
+}
+
+.container {
+  position: relative;
+  margin: 10px 10%;
+}
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  h1 {
+    font-size: 50px;
+    margin: 0;
+  }
+
+  p {
+    font-size: 20px;
+    margin: 0;
+  }
+
+}
+
+.compound-input {
+
+  position: relative;
+  width: 300px;
+  border: 1px solid #aaf;
+  border-radius: 10px;
+  margin: 0 auto;
+
+  input[type="text"] {
+    width: 210px;
+    height: 50px;
+    color: white;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    padding: 0 15px;
+    margin-left: -60px;
+  }
+
+  input[type="text"]:focus-visible {
+    outline: none;
+  }
+
+  label {
+    width: 40px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 20px;
+    height: 50px;
+    line-height: 50px;
+    border-left: 1px solid;
+    padding: 0 10px;
+  }
+
+}
+
+.section-title {
+  padding-bottom: 45px;
+  font-size: 50px;
+}
+
+.section-cta {
+  font-weight: bold;
+  background: #87BB80;
+  color: #fff;
+  height: 50px;
+  line-height: 46px;
+  min-width: 200px;
+  border: 2px solid #87BB80;
+  padding: 0 26px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 0;
+  text-align: center;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.floating-cta {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 8px;
+  margin-top: 12px;
+}
+
+.section-cta:hover {
+  border-color: #fff;
+  background: #fff;
+  color: #222;
+}
+
+#powered-by {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 140px;
+  height: 60px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-image: url("../images/near_indexer_logo.png");
+}
+
+#main {
+  width: 100%;
+  height: 100%;
+  background-color: #222;
+}
+
+
+#status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #FAA;
+  font-size: 18px;
+  padding: 5px;
+  /*border-radius: 5px;*/
+  width: -moz-calc( 50% - 30px);
+  min-height: 30px;
+  overflow: hidden;
+  background-color: #644;
+}
+
+#help-message {
+  padding: 2px;
+  font-size: 0.8em;
+  background-color: #464;
+  /*border-radius: 2px;*/
+}
+
+#content {
+  position: relative;
+  min-height: 500px;
+  overflow: hidden;
+}
+
+.fullscreen #content {
+  min-height: -moz-calc(100% - 80px);
+  min-height: -webkit-calc(100% - 80px);
+  min-height: calc(100% - 80px);
+}
+
+.info-section p {
+  padding-left: 20px;
+  margin: 2px;
+}
+
+.info-section strong {
+  color: #FEA;
+}
+
+#visual {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+}
+
+
+.item-list .item {
+  margin: 5px;
+  padding: 5px;
+  font-size: 1.2em;
+
+  background-color: transparent;
+  color: #999;
+  padding-left: 5px;
+  transition: background-color 300ms, color 300ms, padding-left 300ms;
+  -moz-transition: background-color 300ms, color 300ms, padding-left 300ms;
+  -webkit-transition: background-color 300ms, color 300ms, padding-left 300ms;
+}
+
+.item-list .item:hover {
+  background-color: #33A;
+  /*border-radius: 4px;*/
+  color: white;
+  padding-left: 15px;
+  transition: background-color 300ms, color 300ms, padding-left 300ms;
+  -moz-transition: background-color 300ms, color 300ms, padding-left 300ms;
+  -webkit-transition: background-color 300ms, color 300ms, padding-left 300ms;
+  cursor: pointer;
+}
+
+#gallery .item-list .item:hover {
+  background-color: #A83;
+}
+
+.item-list .item strong {
+  display: inline-block;
+  width: 200px;
+}
+
+.form label {
+  font-size: 1.2em;
+  width: 200px;
+  display: inline-block;
+  text-align: right;
+}
+
+label {
+  font-weight: bold;
+  color: #87bb80;
+}
+
+.header input {
+  color: #EEE;
+  background-color: #555;
+  font-size: 1.2em;
+  border: 1px solid black;
+  /*border-radius: 4px;*/
+  padding: 2px;
+  /*box-shadow: inset 0 0 3px #333; */
+  font-family: Inter, sans-serif;
+  width: 250px;
+}
+
+textarea {
+  vertical-align: top;
+}
+
+#block-app {
+  width:100%;
+  height:100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.5);
+  text-align: center;
+  z-index: 6;
+}
+
+#block-app span {
+  display: block;
+  font-size: 30px;
+  margin: auto;
+  margin-top: 300px;
+}
+
+#block-app span a {
+  display: inline-block;
+  /*border-radius: 4px;*/
+  text-decoration: none;
+  color: black;
+  background-color: red;
+  padding: 0 4px 0 4px;
+}
+
+::-webkit-scrollbar {
+  height: 12px;
+  width: 6px;
+  background: #222;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(200,200,200,0.4);
+}
+::-webkit-scrollbar-corner {
+  background: #766;
+}
+
+#editor {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+#editor .toolsbar {
+  width: 100%;
+  height: 30px;
+  background-color: #262626;
+  margin: 0;
+  padding: 0;
+}
+
+#editor .toolsbar button {
+  padding: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 3px 0 0 3px;
+}
+
+#editor .toolsbar button.enabled {
+  background-color: #66A;
+}
+
+#world {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+}
+
+#worldcanvas {
+  background-color: #343;
+}
+
+.popup {
+  position: absolute;
+  top: 0;
+  background-color: rgba(50,50,90,0.8);
+  width: 100%;
+  height: 100%;
+}
+
+.popup .header, .nodepanel .header {
+  width: 100%;
+  height: 30px;
+  font-size: 20px;
+  padding: 2px;
+}
+
+#help {
+  color: #eee;
+}
+
+#help p {
+  margin: 10px;
+}
+
+.selector {
+  font-size: 1.8em;
+}
+
+
+.selector select {
+  color: white;
+  background-color: black;
+  border: 0;
+  font-size: 1em;
+}
+
+.litegraph-editor {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  background-color: #333;
+  color: #eee;
+  font: 14px Inter, sans-serif;
+
+  position: relative;
+}
+
+.litegraph-editor h1 {
+  font-family: 'IBM Plex Mono', monospace;
+  color: #ddd;
+  font-size: 23px;
+  padding-left: 10px;
+  margin: 0;
+  font-weight: bold;
+}
+
+
+.litegraph-editor h1 span {
+  font-family: 'IBM Plex Mono', sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  color: #aaa;
+}
+
+.litegraph-editor h2 {
+  font-family: 'IBM Plex Mono', sans-serif;
+  padding: 5px;
+  margin-left: 10px;
+}
+
+.litegraph-editor * {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.litegraph-editor .content {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 40px);
+  background-color: #1a1a1a;
+}
+
+.litegraph-editor .header,
+.litegraph-editor .footer {
+  position: relative;
+  height: 40px;
+  background-color: #333;
+}
+
+.litegraph-editor .tools,
+.litegraph-editor .tools-left,
+.litegraph-editor .tools-right {
+  position: absolute;
+  top: 2px;
+  right: 0px;
+  vertical-align: top;
+
+  margin: 3px 5px 0 0px;
+}
+
+.litegraph-editor .tools-left {
+  right: auto;
+  left: 4px;
+}
+
+.litegraph-editor .footer {
+  height: 40px;
+  position: relative;
+  /*border-radius: 0 0 10px 10px;*/
+}
+
+.litegraph-editor .miniwindow {
+  background-color: #333;
+  border: 1px solid #111;
+}
+
+.litegraph-editor .miniwindow .corner-button {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  color: #aaa;
+  cursor: pointer;
+}
+
+/* BUTTONS **********************/
+
+.litegraph-editor .btn {
+  color: #ccc;
+  font-size: 20px;
+  min-width: 30px;
+  /*border-radius: 0.3em;*/
+  border: 0 solid #666;
+  background-color: #3f3f3f;
+  /*box-shadow: 0 0 3px black;*/
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: all 1s;
+  -moz-transition: all 1s;
+  -webkit-transition: all 0.4s;
+}
+
+.litegraph-editor button:hover {
+  background-color: #999;
+  color: #fff;
+  transition: all 1s;
+  -moz-transition: all 1s;
+  -webkit-transition: all 0.4s;
+}
+
+.litegraph-editor button:active {
+  background-color: white;
+}
+
+.litegraph-editor button.fixed {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 1.2em;
+}
+
+.litegraph-editor button img {
+  margin: -4px;
+  vertical-align: top;
+  opacity: 0.8;
+  transition: all 1s;
+}
+
+.litegraph-editor button:hover img {
+  opacity: 1;
+}
+
+.litegraph-editor .header button {
+  height: 32px;
+  vertical-align: top;
+}
+
+.litegraph-editor .footer button {
+  /*font-size: 16px;*/
+}
+
+.litegraph-editor .toolbar-widget {
+  display: inline-block;
+}
+
+.litegraph-editor .editor-area {
+  width: 100%;
+  height: 100%;
+}
+
+.litegraph-editor textarea.code, .litegraph-editor div.code {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  padding: 4px;
+  font: 16px monospace;
+  overflow: auto;
+  resize: none;
+  outline: none;
+}
+
+.litegraph-editor .codeflask {
+  background-color: #2a2a2a;
+}
+
+.litegraph-editor .codeflask textarea {
+  opacity: 0;
+}
+
+.litegraph.dialog.settings textarea {
+  width: 360px;
+  padding: 0px 0px;
+  margin: 20px;
+  background: transparent;
+  border: none;
+  height: 440px;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  resize: none;
+}
+
+table {
+  font-family: "Inter", sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td, table th {
+  //border: 1px solid #ddd;
+  padding: 8px;
+
+  a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+  }
+
+}
+
+table tr:nth-child(even){background-color: #414141;}
+
+table tr:hover {background-color: #2f2f2f;}
+
+.vanillajs-table-header {
+  td {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #2b2b2b;
+    color: white;
+  }
+}
+
+#empty-state {
+
+  display: none;
+
+  text-align: center;
+
+  h1 {
+    font-size: 25px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+
+  img {
+    height: 300px;
+  }
+}
+
+.dropdown {
+  z-index: 1;
+  display: inline-block;
+  position: relative;
+}
+
+.dd-button {
+  font-family: "IBM Plex Mono", monospace;
+  display: inline-block;
+
+  cursor: pointer;
+  white-space: nowrap;
+
+  font-weight: bold;
+  background: #87BB80;
+  color: #fff;
+  height: 30px;
+  line-height: 7px;
+  min-width: 200px;
+  border: 2px solid #87BB80;
+  padding: 10px 30px 10px 20px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 0;
+  text-align: center;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+
+
+}
+
+.dd-button:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #ffffff;
+}
+
+.dd-button:hover {
+  border-color: #fff;
+  background: #fff;
+  color: #222;
+}
+
+
+.dd-input {
+  display: none;
+}
+
+.dd-menu {
+  font-family: "IBM Plex Mono", monospace;
+  position: absolute;
+  top: 100%;
+  padding: 0;
+  margin: 2px 0 0 0;
+  box-shadow: 0 0 6px 0 rgba(0,0,0,0.1);
+  background-color: #1d1d1d;
+  list-style-type: none;
+}
+
+.dd-input + .dd-menu {
+  display: none;
+}
+
+.dd-input:checked + .dd-menu {
+  display: block;
+}
+
+.dd-menu li {
+  padding: 10px 20px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.dd-menu li:hover {
+  background-color: #1a1a1a;
+}
+
+.dd-menu li a {
+  display: block;
+  color: white;
+  margin: -10px -20px;
+  padding: 10px 20px;
+}
+
+.dd-menu li.divider{
+  padding: 0;
+  border-bottom: 1px solid #cccccc;
+}

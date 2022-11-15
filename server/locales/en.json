@@ -1,0 +1,17 @@
+{
+  "FIELD_REQUIRED": "This field is required",
+  "STRING_AT_LEAST": "This field must be at least {{min}} characters",
+  "STRING_AT_MUST": "This cannot be more than {{max}} characters",
+  "EMAIL_IS_NOT_UNIQUE": "There is an account already using this email",
+  "PHONE_IS_NOT_UNIQUE": "There is an account already using this phone number",
+  "FORM_PASSWORD_IS_WEAK": "It must have at least: 8 characters, one uppercase character, one symbol and one number.",
+  "FORM_PASSWORDS_DO_NOT_MATCH": "Passwords do not match",
+  "EMAIL_INVALID": "Invalid email format",
+  "INVALID_FIELD": "Invalid format",
+  "INVALID_EMAIL": "Invalid email format",
+  "INVALID_LOGIN_CREDENTIALS": "Invalid login credentials",
+  "INVALID_PHONE_NUMBER": "Invalid phone number",
+  "INVALID_INVITATION_CODE": "The invitation code is not valid",
+  "USER_IS_NOT_UNIQUE": "A user is already registered with that phone number and/or email",
+  "INSUFFICIENT_FUNDS_IN_DEBITED_WALLET": "Insufficient funds in the debited wallet"
+}
