@@ -49,9 +49,9 @@
     "parcel": "^2.0.0-beta.3.1"
   },
   "scripts": {
-    "devApp": "parcel ./clients_src/app/wallet-checkout.html ./clients_src/app/thank-you.html ./clients_src/app/ko.html ./clients_src/app/list-flows.html ./clients_src/app/edit-flow.html ./clients_src/app/registration.html ./clients_src/app/login.html --dist-dir ./public/app --public-url /app",
+    "devApp": "parcel ./clients_src/app/list-flows.html ./clients_src/app/edit-flow.html ./clients_src/app/registration.html ./clients_src/app/login.html --dist-dir ./public/app --public-url /app",
     "devSite": "parcel ./clients_src/site/index.html --dist-dir ./public/site --public-url /",
-    "buildApp": "parcel build ./clients_src/app/wallet-checkout.html ./clients_src/app/thank-you.html ./clients_src/app/ko.html ./clients_src/app/list-flows.html ./clients_src/app/edit-flow.html ./clients_src/app/login.html --dist-dir ./public/app --public-url /app",
+    "buildApp": "parcel build ./clients_src/app/list-flows.html ./clients_src/app/edit-flow.html ./clients_src/app/login.html --dist-dir ./public/app --public-url /app",
     "buildSite": "parcel build ./clients_src/site/index.html --dist-dir ./public/site --public-url /",
     "server": "node ./server/index.js"
   },
