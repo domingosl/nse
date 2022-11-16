@@ -1,5 +1,5 @@
 {
-  "name": "f1-contest",
+  "name": "nse",
   "version": "1.0.0",
   "description": "",
   "dependencies": {
@@ -37,16 +37,13 @@
     "near-api-js": "^1.1.0",
     "node-telegram-bot-api": "^0.60.0",
     "noty": "^3.2.0-beta-deprecated",
+    "parcel": "^2.8.0",
     "path": "^0.12.7",
     "pg": "^8.8.0",
     "rate-limiter-flexible": "^2.2.2",
     "sweetalert2": "^11.0.17",
     "uuid": "^8.3.2",
     "validator": "^13.6.0"
-  },
-  "devDependencies": {
-    "@parcel/transformer-sass": "^2.0.0-beta.3.1",
-    "parcel": "^2.0.0-beta.3.1"
   },
   "scripts": {
     "devApp": "parcel ./clients_src/app/list-flows.html ./clients_src/app/edit-flow.html ./clients_src/app/registration.html ./clients_src/app/login.html --dist-dir ./public/app --public-url /app",
@@ -56,5 +53,13 @@
     "server": "node ./server/index.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.8.0",
+    "buffer": "^5.7.1",
+    "crypto-browserify": "^3.12.0",
+    "events": "^3.3.0",
+    "stream-browserify": "^3.0.0",
+    "string_decoder": "^1.3.0"
+  }
 }
