@@ -1,5 +1,5 @@
 const Flows = require('../../models/flows');
-const sendEmailService = require('../../services/send-email');
+const postman = require('../../services/postman');
 
 const tagLabel = 'sendEmailFromFlow';
 
@@ -12,7 +12,13 @@ module.exports = async (req, res) => {
         if(!flow)
             return res.forbidden("Cannot send email");
 
-        await sendEmailService(req.body.name, req.body.email, "Notification from your flow: " + flow.name, req.body.message);
+        await postman.mailer.to(req.body.name, req.body.email)
+            .setSubject('Notification from flow')
+            .setTemplate("8")
+            .setParams({
+                flowName: flow.name,
+                message: req.body.message
+            }).send();
 
         res.resolve();
 
