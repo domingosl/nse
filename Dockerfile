@@ -10,10 +10,14 @@ WORKDIR /app
 COPY package.json .
 
 RUN npm install
+
+COPY . .
+
+
 RUN npm run buildApp
 RUN npm run buildSite
 
-COPY . .
+
 
 EXPOSE 4573
 
