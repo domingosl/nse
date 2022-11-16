@@ -11,5 +11,5 @@ services:
     networks:
       - backend
 networks:
-  backend-services:
+  backend:
       name: backend
