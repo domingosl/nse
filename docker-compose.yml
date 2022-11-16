@@ -9,7 +9,7 @@ services:
     ports:
       - '4573:4573'
     networks:
-      - backend-services
+      - backend
 networks:
   backend-services:
-      name: backend-services
+      name: backend
