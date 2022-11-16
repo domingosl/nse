@@ -59,7 +59,7 @@ Object.keys(Blocks).forEach(blockName => {
 
 
 
-loadFlow = async () => {
+const loadFlow = async () => {
 
     const response = await apiClient.Flows.read(flowId).execute();
 
