@@ -15,8 +15,6 @@ RUN npm run buildSite
 
 COPY . .
 
-RUN git config --global credential.helper store && npm run git-pull
-
 EXPOSE 4573
 
 CMD pm2-runtime ecosystem.config.js
