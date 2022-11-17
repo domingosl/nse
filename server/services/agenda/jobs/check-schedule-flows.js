@@ -25,7 +25,7 @@ module.exports = agenda => {
     });
 
 
-    agenda.every('0 * * * *', 'check schedule flows');
+    agenda.every('1 * * * *', 'check schedule flows');
 
     utilities.logger.info('Job declared', { tagLabel });
 
