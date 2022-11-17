@@ -53,7 +53,7 @@ module.exports = agenda => {
     });
 
 
-    agenda.every('*/' + String(checkInterval/1000) +' * * * *', 'check near actions flows');
+    agenda.every('*/' + checkInterval +' * * * *', 'check near actions flows');
 
     utilities.logger.info('Job declared', {tagLabel});
 

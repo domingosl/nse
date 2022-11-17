@@ -26,7 +26,7 @@ module.exports.getRecentActionsFromAccount = (account, interval = process.env.NE
 
     const fromTime = moment()
         .startOf('minute')
-        .subtract(interval, 'milliseconds')
+        .subtract(interval, 'minutes')
         .format('x') * 1000000; //Nanoseconds
 
     const query = "SELECT * FROM action_receipt_actions " +
