@@ -1,6 +1,8 @@
 module.exports.getMiddleware = (limiter) => (req, res, next) => {
 
-    limiter.consume(req.ip)
+    const uid = req.locals && req.locals.user ? req.locals.user._id : req.ip;
+
+    limiter.consume(uid)
         .then(() => {
             next();
         })
