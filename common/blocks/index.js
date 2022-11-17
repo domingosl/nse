@@ -25,3 +25,4 @@ module.exports.StringJsonParse = require('./string-json-parse');
 module.exports.UtilityCount = require('./utility-count');
 module.exports.UtilityString = require('./utility-string');
 module.exports.UtilityStringTemplate = require('./utility-string-template');
+module.exports.UtilityNearPrices = require('./utility-get-near-price');

@@ -1,21 +1,37 @@
 const Requestor = require('./requestor-class');
 
-const prepareURL = (url, _params) => {
+const prepareURL = (url, _urlParams, _queryParams) => {
 
     let params;
-    if(typeof _params === 'string')
-        params = [_params];
+    if(typeof _urlParams === 'string')
+        params = [_urlParams];
     else
-        params = _params;
+        params = _urlParams;
 
-    return url.replace(/{(\d+)}/g, function (match, number) {
+    let res = url.replace(/{(\d+)}/g, function (match, number) {
         return typeof params[number] !== 'undefined'
             ? params[number]
             : match
             ;
-    })
+    });
+
+    if(_queryParams)
+        res += '?' + serialize(_queryParams);
+
+    return res;
 
 };
+
+const serialize = (obj) => {
+    const str = [];
+
+    for (let p in obj)
+        if (obj.hasOwnProperty(p)) {
+            str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+        }
+
+    return str.join("&");
+}
 
 module.exports = class RestInterface {
 
@@ -40,8 +56,8 @@ module.exports = class RestInterface {
         return new Requestor(this.rootContext, this.createEndpoint, 'POST', payload, this.isPublic.create);
     }
 
-    read(params = []) {
-        return new Requestor(this.rootContext, prepareURL(this.readEndpoint, params), 'GET', null, this.isPublic.read);
+    read(urlParams = [], queryParams = null) {
+        return new Requestor(this.rootContext, prepareURL(this.readEndpoint, urlParams, queryParams), 'GET', null, this.isPublic.read);
     }
 
     list(payload) {
