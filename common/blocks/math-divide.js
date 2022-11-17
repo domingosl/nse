@@ -27,6 +27,9 @@ class MathDivide extends AbstractBlock {
         const a = (parseFloat(this.getInputData(0)) || 0);
         const b = (parseFloat(this.getInputData(1)) || 0);
 
+        if(!b)
+            return this.error("Can't dive by zero!");
+
         this.setOutputData(0, a / b);
     }
 
