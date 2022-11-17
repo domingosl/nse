@@ -5,11 +5,11 @@ const nearAPI = require("near-api-js");
 const { connect } = nearAPI;
 
 const connectionConfig = {
-    networkId: "testnet",
-    nodeUrl: "https://rpc.testnet.near.org",
-    walletUrl: "https://wallet.testnet.near.org",
-    helperUrl: "https://helper.testnet.near.org",
-    explorerUrl: "https://explorer.testnet.near.org",
+    networkId: process.env.NEAR_NETWORK_URL,
+    nodeUrl: process.env.NEAR_NODE_URL,
+    walletUrl: process.env.NEAR_WALLET_URL,
+    helperUrl: process.env.NEAR_HELPER_URL,
+    explorerUrl: process.env.NEAR_EXPLORER_URL,
 };
 
 const accountNameRegex = /[a-zA-Z0-9].+\.testnet/;
