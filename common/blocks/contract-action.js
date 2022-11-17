@@ -60,8 +60,8 @@ class ContractAction extends AbstractBlock {
         this.setOutputData(2, data.args.deposit);
         this.setOutputData(3, data.fromAccount);
         this.setOutputData(4, data.actionKind);
-        this.setOutputData(5, data.args.method_name);
-        this.setOutputData(6, data.args.args_json);
+        this.setOutputData(5, data.args.methodName);
+        this.setOutputData(6, data.args.methodArgs);
 
         this.triggerSlot(0);
     }

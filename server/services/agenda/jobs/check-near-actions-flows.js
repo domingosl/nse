@@ -40,7 +40,12 @@ module.exports = agenda => {
                     data: {
                         receiptId: action.receipt_id,
                         actionKind: action.action_kind,
-                        args: action.args,
+                        args: {
+                            gas: parseInt(action.args.gas),
+                            deposit: parseInt(action.args.deposit),
+                            methodName: action.args.method_name,
+                            methodArgs: action.args.args_json
+                        },
                         fromAccount: action.receipt_predecessor_account_id
                     }
                 })
