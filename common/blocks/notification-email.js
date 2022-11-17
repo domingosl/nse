@@ -12,8 +12,7 @@ class Email extends AbstractBlock {
         super(props);
 
         this.addInput('trigger', LiteGraph.ACTION);
-        this.addInput('{a}', "");
-        this.addInput('{b}', "");
+        this.addInput('message (str)', "string");
 
 
         this.addProperty('name', "");
@@ -26,7 +25,6 @@ class Email extends AbstractBlock {
 
         this.nameWidget = this.addWidget("text","Recipient Name", "", v => this.properties.name = v );
         this.emailWidget = this.addWidget("text","Recipient Email", "", v =>  this.properties.email = v );
-        this.messageWidget = this.addWidget("text","Message", "", v => this.properties.message = v, { multiline:true } );
 
     }
 
@@ -35,31 +33,25 @@ class Email extends AbstractBlock {
 
         this.nameWidget.value = this.properties.name;
         this.emailWidget.value = this.properties.email;
-        this.messageWidget.value = this.properties.message;
 
     }
 
 
     async onAction() {
 
-        if(!this.properties['name'] && typeof document === 'object')
+        if(!this.properties['name'])
             return this.error('Cannot send email: Missing recipient name');
-        else if(!this.properties['email'] && typeof document === 'object')
+        else if(!this.properties['email'])
             return this.error('Cannot send email: Missing recipient email');
-        else if(!this.properties['message'] && typeof document === 'object')
+        else if(!this.getInputData(1))
             return this.error('Cannot send email: Missing message');
-        else if(!this.properties['name'] || !this.properties['email'] || !this.properties['message'])
+        else if(!this.properties['name'] || !this.properties['email'] || !this.getInputData(1))
             return;
-
-        const a = this.getInputData(1);
-        const b = this.getInputData(2);
-
-        const messageWithData = this.properties.message.replace('{a}', a).replace('{b}', b);
 
         const response = await this.graph.apiClient.Tools.SendEmailFromFlow.create({
             email: this.properties.email,
             name: this.properties.name,
-            message: messageWithData,
+            message: this.getInputData(1),
             flowId: this.graph.currentFlow._id
         }).execute();
 
