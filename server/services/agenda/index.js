@@ -12,7 +12,6 @@ const agenda = new Agenda({
 });
 
 agenda.on('fail', (err, job) => {
-
     utilities.logger.error('Job failed with error', {error: err.message, job: job.attrs.name, tagLabel});
 
 });

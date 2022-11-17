@@ -159,7 +159,6 @@ async function startAPIServer(db) {
         utilities.logger.info('Connection with Near indexer DB done', {tagLabel});
         global.nearDb = nearDb;
 
-        console.log(await nearDb.getRecentActionsFromAccount('dev-1667593106668-86393838398542',  1 * 3600 * 1000));
 
         await agenda.start();
         utilities.logger.info('Agenda loaded', {tagLabel});

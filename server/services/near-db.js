@@ -24,7 +24,10 @@ module.exports.query = query => new Promise((resolve, reject) => {
 
 module.exports.getRecentActionsFromAccount = (account, interval = process.env.NEAR_INDEXER_CHECK_INTERVAL) => new Promise((resolve, reject) => {
 
-    const fromTime = moment().subtract(interval, 'milliseconds').format('x') * 1000 * 1000; //Nanoseconds
+    const fromTime = moment()
+        .startOf('minute')
+        .subtract(interval, 'milliseconds')
+        .format('x') * 1000000; //Nanoseconds
 
     const query = "SELECT * FROM action_receipt_actions " +
         "WHERE receipt_receiver_account_id = '" + account + "' AND receipt_included_in_block_timestamp > " + fromTime + " " +

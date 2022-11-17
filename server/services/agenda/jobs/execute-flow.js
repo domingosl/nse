@@ -5,6 +5,7 @@ const LiteGraph = require('../../../../common/lib/litegraph');
 const ApiClient = require('../../../../common/services/api-client');
 
 const Flows = require('../../../models/flows');
+const NearActions = require('../../../models/near-actions');
 
 require('../../../models/users');
 const {bool} = require("joi");
@@ -45,7 +46,7 @@ const waitForCompletion = async (job, graph, iteration = 1) => {
 
 module.exports = agenda => {
 
-    agenda.define('execute flow', { concurrency: 5 }, async job => {
+    agenda.define('execute flow', { concurrency: 3 }, async job => {
         utilities.logger.info('Running JOB', { tagLabel, data: job.attrs.data });
 
         let flow;
@@ -110,6 +111,25 @@ module.exports = agenda => {
                 }
 
             }
+            else if(job.attrs.data.trigger === 'nearAction') {
+
+                const entryNodes = graph.findNodesByType('Contract/Contract Action');
+
+                if(entryNodes.length >= 1) {
+
+                    setTimeout(() => entryNodes[0].triggerEvent(job.attrs.data.data), 0);
+
+                    await waitForCompletion(job, graph);
+
+                    const nearAction = new NearActions({
+                        receiptId: job.attrs.data.data.receiptId,
+                        flow: flow._id
+                    });
+
+                    await nearAction.save();
+                }
+
+            }
             else {
                 return Promise.reject('Unknown trigger');
             }
@@ -117,7 +137,6 @@ module.exports = agenda => {
             flow.lastExecution.completed = true;
             flow.lastExecution.date = new Date();
 
-            //console.log(graph.serialize());
 
             flow.logic = JSON.stringify(graph.serialize());
 

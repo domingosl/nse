@@ -8,12 +8,17 @@ const fs = require('fs');
 const appRoot = require('app-root-path').path;
 const agenda = require('./server/services/agenda');
 const dbConn = require('./server/utils/db');
+const nearDb = require('./server/services/near-db');
 
 const tagLabel = process.name;
+
+nearDb.init();
 
 global.api = {
     config: require('./server/config')
 };
+
+global.nearDb = nearDb;
 
 global.imTheWorker = true;
 

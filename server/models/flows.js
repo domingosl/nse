@@ -61,6 +61,15 @@ const FlowsSchema = new mongoose.Schema({
                 set: key => encrypt(key)
             }
         },
+        nearActions: {
+            active: {
+                type: Boolean,
+                default: false
+            },
+            account: {
+                type: String
+            }
+        },
         status: {
             type: String,
             enum: ['inactive', 'active', 'running'],
@@ -83,10 +92,28 @@ FlowsSchema.plugin(publicFields, [
     "logic",
     "nextCronEvent",
     "incomingUserWebhook",
+    "nearActions",
     "status"
 ]);
 
 FlowsSchema.plugin(mongooseDelete, { overrideMethods: true });
+
+FlowsSchema.methods.refreshNearActions = function () {
+    const logic = JSON.parse(this.logic);
+    const nearActionNode = logic.nodes.find(node => node.type === 'Contract/Contract Action');
+
+    if(!nearActionNode)
+    {
+        this.nearActions.active = false;
+        this.nearActions.account = null;
+        return;
+    }
+
+
+    this.nearActions.active = true;
+    this.nearActions.account = nearActionNode.properties.name;
+
+}
 
 FlowsSchema.methods.refreshUserIncomingWebhook = function () {
 

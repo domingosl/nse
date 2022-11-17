@@ -2,11 +2,11 @@ const AbstractBlock = require('./abstract-block');
 const LiteGraph = require("../lib/litegraph");
 
 
-class ContractEvent extends AbstractBlock {
+class ContractAction extends AbstractBlock {
 
-    static title = "Contract Event";
+    static title = "Contract Action";
     static desc = "Triggers when a something happens to a contract/account";
-    static menu = "Contract/Contract Event";
+    static menu = "Contract/Contract Action";
 
     constructor(props) {
 
@@ -28,7 +28,7 @@ class ContractEvent extends AbstractBlock {
 
         this.nameWidget = this.addWidget(
             "string",
-            "Account Name",
+            "Account",
             "",
             value => { this.properties['name'] = value });
 
@@ -40,11 +40,33 @@ class ContractEvent extends AbstractBlock {
     }
 
 
-    async onAction(action, event) {
+    async onAdded() {
 
+        const totalLikeMe = this.graph._nodes.reduce((acum, current) => current instanceof ContractAction ? acum + 1 : 0, 0);
+
+        if(totalLikeMe === 1)
+            return;
+
+        this.error("Only one Contract Actions block can be added by flow");
+        this.graph.remove(this);
+
+
+    }
+
+    triggerEvent(data) {
+        console.log("Near block trigger", data);
+
+        this.setOutputData(1, data.args.gas);
+        this.setOutputData(2, data.args.deposit);
+        this.setOutputData(3, data.fromAccount);
+        this.setOutputData(4, data.actionKind);
+        this.setOutputData(5, data.args.method_name);
+        this.setOutputData(6, data.args.args_json);
+
+        this.triggerSlot(0);
     }
 
 }
 
-module.exports = ContractEvent;
+module.exports = ContractAction;
 
