@@ -6600,6 +6600,7 @@ LGraphCanvas.prototype.centerOnNode = function (node) {
  * @method adjustMouseEvent
  **/
 LGraphCanvas.prototype.adjustMouseEvent = function (e) {
+
     if (this.canvas) {
         var b = this.canvas.getBoundingClientRect();
         e.localX = e.clientX - b.left;
@@ -6609,8 +6610,6 @@ LGraphCanvas.prototype.adjustMouseEvent = function (e) {
         e.localY = e.clientY;
     }
 
-    e.deltaX = e.localX - this.last_mouse_position[0];
-    e.deltaY = e.localY - this.last_mouse_position[1];
 
     this.last_mouse_position[0] = e.localX;
     this.last_mouse_position[1] = e.localY;
