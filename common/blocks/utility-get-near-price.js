@@ -3,7 +3,7 @@ const Modal = require('../../clients_src/app/js/modals/abstract');
 
 class Email extends AbstractBlock {
 
-    static title = "NEAR prices (USD)";
+    static title = "NEAR/USD";
     static desc = "Get prices of NEAR and GAS";
     static menu = "Utility/NEAR prices";
 
@@ -13,7 +13,7 @@ class Email extends AbstractBlock {
 
         this.addInput('trigger', LiteGraph.ACTION);
         this.addOutput('trigger', LiteGraph.EVENT);
-        this.addOutput('NEAR (number)', 'number');
+        this.addOutput('NEAR/USD (number)', 'number');
         this.addOutput('GAS (number)', 'number');
 
     }
