@@ -90,7 +90,7 @@ app.use(require('morgan')("combined", {"stream": utilities.logger.stream}));
 
 
 app.use(
-    "/worker/",
+    "/worker",
     agendaAuthMiddleware,
     Agendash(agenda, {title: `NEAR-FLOW-WORKER (${process.env.ENV.substring(0, 3)})`})
 );
