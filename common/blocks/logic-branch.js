@@ -45,7 +45,7 @@ class Branch extends AbstractBlock {
         const a = this.getInputData(1);
         const b = this.getInputData(2);
 
-        if(this.properties.operator === 'A equals B' && parseFloat(a) === parseFloat(b))
+        if(this.properties.operator === 'A equals B' && a === b)
             this.triggerSlot(0, event);
         else if(this.properties.operator === 'A lower than B' && parseFloat(a) < parseFloat(b))
             this.triggerSlot(0, event);
