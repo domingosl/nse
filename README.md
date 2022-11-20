@@ -6,7 +6,13 @@
 With ❤ From Milan 🍕, By Eng. Domingo Lupo
 
 ## What it is?
-TODO
+No-code solution to listen and process on-chain events. It's an Integration Platform As A Service that can be embedded into Pagoda Console or run stand-alone.
+
+**READ MORE AT: [https://devpost.com/software/near-smart-events](https://devpost.com/software/near-smart-events)**
+
+- Marketing presentation: [https://youtu.be/0O109mMgp4Y](https://youtu.be/0O109mMgp4Y)
+- Technical presentation: [https://youtu.be/IQ76AY2issw](https://youtu.be/IQ76AY2issw)
+
 
 ## Tech Stack
 - NodeJS
@@ -18,13 +24,13 @@ TODO
 - Docker
 
 ### Website (Private Alpha)
-TODO
+[https://nearsmart.events](https://nearsmart.events)
 
 You can use a demo account:
 
 **user**: near@test.com
 
-**password**: Password123!
+**password**: Pagoda1.
 
 Or you can create a new account using the **invitation code**: **nse0001**
 
