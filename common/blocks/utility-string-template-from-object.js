@@ -2,12 +2,12 @@ const AbstractBlock = require('./abstract-block');
 const LiteGraph = require("../lib/litegraph");
 
 
-class UtilityStringTemplate extends AbstractBlock {
+class UtilityStringTemplateFromObject extends AbstractBlock {
 
-    static title = "Text template";
+    static title = "Text template from Obj";
     static desc = "Given a text and a object, the block will replace occurrences of the object keys in the text surrounded by {}\n" +
         "For example: Obj { foo: \"world\" } and Text \"Hello {foo}\", will output \"Hello world\"";
-    static menu = "String/Template";
+    static menu = "String/Template from Obj";
 
     constructor(props) {
 
@@ -62,4 +62,4 @@ class UtilityStringTemplate extends AbstractBlock {
 
 }
 
-module.exports = UtilityStringTemplate;
+module.exports = UtilityStringTemplateFromObject;

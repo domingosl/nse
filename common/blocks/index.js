@@ -24,5 +24,6 @@ module.exports.StringConcat = require('./string-concat');
 module.exports.StringJsonParse = require('./string-json-parse');
 module.exports.UtilityCount = require('./utility-count');
 module.exports.UtilityString = require('./utility-string');
-module.exports.UtilityStringTemplate = require('./utility-string-template');
+module.exports.UtilityStringFromObjTemplate = require('./utility-string-template-from-object');
+module.exports.UtilityStringFromConstTemplate = require('./utility-string-template-from-constants');
 module.exports.UtilityNearPrices = require('./utility-get-near-price');
