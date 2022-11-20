@@ -80,13 +80,17 @@ module.exports = class ApiClient {
             const query = (method === 'GET' && payload ? '?' + me._serialize(payload) : '')
             const url = me.baseURL + endpoint + query;
 
-            const response = await axios({
+            const axiosPayload = {
                 headers: me._getHeaders(!isPublic),
                 url,
                 method,
-                data: payload,
                 timeout: 15000
-            });
+            };
+
+            if(method !== 'GET')
+                axiosPayload.data = payload || {};
+
+            const response = await axios(axiosPayload);
 
             this.runningRequests--;
 
