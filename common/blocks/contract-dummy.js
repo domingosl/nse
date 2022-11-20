@@ -54,17 +54,17 @@ class ContractDummy extends AbstractBlock {
         this.actionKindComboWidget = this.addWidget(
             "combo",
             "Action",
-            "CREATE ACCOUNT",
+            "CREATE_ACCOUNT",
             selectedOperator => this.properties['actionKind'] = selectedOperator,
             { values: [
-                    'CREATE ACCOUNT',
-                    'DEPLOY CONTRACT',
-                    'FUNCTION CALL',
+                    'CREATE_ACCOUNT',
+                    'DEPLOY_CONTRACT',
+                    'FUNCTION_CALL',
                     'TRANSFER',
                     'STAKE',
-                    'ADD KEY',
-                    'DELETE KEY',
-                    'DELETE ACCOUNT'
+                    'ADD_KEY',
+                    'DELETE_KEY',
+                    'DELETE_ACCOUNT'
                 ]} );
 
         this.methodNameWidget = this.addWidget(
@@ -81,7 +81,7 @@ class ContractDummy extends AbstractBlock {
         this.gasWidget.value = this.properties['gas']  ? this.properties['gas'] : 0;
         this.depositWidget.value = this.properties['deposit']  ? this.properties['deposit'] : 0;
         this.fromAccountWidget.value = this.properties['fromAccount']  ? this.properties['fromAccount'] : "";
-        this.actionKindComboWidget.value = this.properties['actionKind'] ? this.properties['actionKind'] : "CREATE ACCOUNT";
+        this.actionKindComboWidget.value = this.properties['actionKind'] ? this.properties['actionKind'] : "CREATE_ACCOUNT";
         this.methodNameWidget.value = this.properties['methodName'] ? this.properties['methodName'] : "";
 
     }
